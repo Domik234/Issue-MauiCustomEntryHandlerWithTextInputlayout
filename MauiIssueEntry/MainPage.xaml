@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:MauiIssueEntry.Controls"
+             x:Class="MauiIssueEntry.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <Image
+                Source="dotnet_bot.png"
+                HeightRequest="185"
+                Aspect="AspectFit"
+                SemanticProperties.Description="dot net bot in a race car number eight" />
+
+            <Label
+                Text="-- MAUI Entry ---"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1" />
+
+            <!-- MAUI ENTRY -->
+            <Entry Placeholder="Placeholder test" Text="Text test" />
+
+            <Label
+                Text="-- Custom Entry ---"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1" />
+
+            <!-- CUSTOM ENTRY -->
+            <controls:CEntry />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
