@@ -1,36 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:controls="clr-namespace:MauiIssueEntry.Controls"
-             x:Class="MauiIssueEntry.MainPage">
+<ContentPage
+    x:Class="MauiIssueEntry.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:MauiIssueEntry.Controls">
 
     <ScrollView>
-        <VerticalStackLayout
-            Padding="30,0"
-            Spacing="25">
+        <StackLayout Padding="30,0" Spacing="25">
             <Image
-                Source="dotnet_bot.png"
-                HeightRequest="185"
                 Aspect="AspectFit"
-                SemanticProperties.Description="dot net bot in a race car number eight" />
+                HeightRequest="185"
+                SemanticProperties.Description="dot net bot in a race car number eight"
+                Source="dotnet_bot.png" />
 
             <Label
-                Text="-- MAUI Entry ---"
+                SemanticProperties.HeadingLevel="Level1"
                 Style="{StaticResource Headline}"
-                SemanticProperties.HeadingLevel="Level1" />
+                Text="-- MAUI Entry ---" />
 
-            <!-- MAUI ENTRY -->
+            <!--  MAUI ENTRY  -->
             <Entry Placeholder="Placeholder test" Text="Text test" />
 
             <Label
-                Text="-- Custom Entry ---"
+                SemanticProperties.HeadingLevel="Level1"
                 Style="{StaticResource Headline}"
-                SemanticProperties.HeadingLevel="Level1" />
+                Text="-- Custom Entry ---" />
 
-            <!-- CUSTOM ENTRY -->
-            <controls:CEntry />
+            <!--  CUSTOM ENTRY  -->
+            <controls:CEntry Placeholder="Ahoj" Text="Test" />
 
-        </VerticalStackLayout>
+        </StackLayout>
     </ScrollView>
 
 </ContentPage>

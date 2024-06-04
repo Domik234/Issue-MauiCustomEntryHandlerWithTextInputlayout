@@ -2,7 +2,6 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/.vs
-/MauiIssueEntry/.vs/MauiIssueEntry
-/MauiIssueEntry/bin/Debug/net8.0-android
-/MauiIssueEntry/obj
+/**/.vs
+/**/bin
+/**/obj
