@@ -14,7 +14,8 @@ public class CEntry : Entry
     protected override Size MeasureOverride(double widthConstraint, double heightConstraint)
     {
         var size = base.MeasureOverride(widthConstraint, heightConstraint); //Required to tolerate layout's constraints
-        return new Size(widthConstraint, size.Height);
+        MinimumWidthRequest = widthConstraint;
+        return size;
     }
 }
 
@@ -22,7 +23,6 @@ public class CEntryHandler : ViewHandler<CEntry, TextInputLayout>, IEntryHandler
 {
     public static PropertyMapper<CEntry, CEntryHandler> PropertyMapper = new PropertyMapper<CEntry, CEntryHandler>(EntryHandler.Mapper)
     {
-        [nameof(IView.Width)] = MapWidth, //Width has to get custom size
         [nameof(IEntry.Placeholder)] = MapPlaceholder, //Placeholder needs to be moved to TextInputLayout
     };
 
@@ -51,20 +51,6 @@ public class CEntryHandler : ViewHandler<CEntry, TextInputLayout>, IEntryHandler
     public static void MapPlaceholder(CEntryHandler handler, CEntry entry)
     {
         handler.PlatformView.Hint = entry.Placeholder;
-    }
-
-    public static void MapWidth(CEntryHandler handler, CEntry entry)
-    {
-        var width = entry.Width;
-        if (width is <= 0 or double.NaN)
-            width = entry.DesiredSize.Width;
-        if (width is <= 0 or double.NaN)
-            return;
-
-        var widthPx = (int)(DeviceDisplay.MainDisplayInfo.Density * width);
-        handler.PlatformView.SetMinimumWidth(widthPx);
-        handler.PlatformView.EditText.SetWidth(widthPx);
-        handler.PlatformView.RequestLayout();
     }
 
     public new IEntry VirtualView => base.VirtualView;
